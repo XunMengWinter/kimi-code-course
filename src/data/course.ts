@@ -8,7 +8,7 @@ export interface Chapter {
   no: string
   title: string
   subtitle: string
-  icon: 'boxes' | 'smartphone' | 'wand' | 'chat' | 'shop'
+  icon: 'boxes' | 'smartphone' | 'wand' | 'chat' | 'calendar'
   status: 'open' | 'updating'
   lessons: Lesson[]
 }
@@ -83,15 +83,22 @@ export const chapters: Chapter[] = [
   {
     id: 'ch5',
     no: '05',
-    title: '项目实战二 · 商城小程序',
-    subtitle: '微信云开发 · 免登录 · 支持微信支付',
-    icon: 'shop',
+    title: '项目实战二 · 预约小程序',
+    subtitle: '摄影约拍主题 · 免登录 · 个人主体即可上线',
+    icon: 'calendar',
     status: 'updating',
     lessons: [
-      { title: '微信云开发快速上手', tag: '规划中' },
-      { title: '免登录用户体系', tag: '规划中' },
-      { title: '微信支付接入', tag: '规划中' },
-      { title: '更多章节陆续公布', tag: '敬请期待' },
+      { title: '项目初始化与云开发环境搭建', tag: '规划中' },
+      { title: '设计预约数据模型（服务 / 排期 / 订单）', tag: '规划中' },
+      { title: '服务列表与详情页开发', tag: '规划中' },
+      { title: '日历组件与时段选择', tag: '规划中' },
+      { title: '预约表单与免登录下单', tag: '规划中' },
+      { title: '订阅消息：预约成功通知', tag: '规划中' },
+      { title: '我的预约：查询与取消', tag: '规划中' },
+      { title: '商家管理端：排期管理', tag: '规划中' },
+      { title: '商家管理端：订单确认与核销', tag: '规划中' },
+      { title: '发布上线与类目审核要点', tag: '规划中' },
+      { title: '番外：定金支付（需企业资质）', tag: '番外篇' },
     ],
   },
 ]
@@ -103,7 +110,7 @@ export interface Project {
   badges: string[]
   lessons: string
   status: string
-  mock: 'chat' | 'shop'
+  mock: 'chat' | 'booking'
 }
 
 export const projects: Project[] = [
@@ -118,12 +125,12 @@ export const projects: Project[] = [
   },
   {
     no: 'PROJECT 02',
-    name: '商城小程序',
-    desc: '基于微信云开发商用级商城：免登录用户体系、商品与订单管理、微信支付接入，云端一体，无需自建服务器。',
-    badges: ['微信云开发', '免登录', '微信支付', '云数据库'],
-    lessons: '章节陆续更新',
+    name: '预约小程序（摄影约拍）',
+    desc: '基于微信云开发的预约系统：服务展示、日历选时段、免登录下单、订阅消息通知，附带商家管理端（排期与核销）。个人主体即可发布，番外篇讲解定金支付。',
+    badges: ['微信云开发', '免登录', '日历选时段', '订阅消息', '商家管理端'],
+    lessons: '10 节主线 + 1 节支付番外',
     status: '更新中',
-    mock: 'shop',
+    mock: 'booking',
   },
 ]
 
@@ -143,17 +150,17 @@ export const faqs: Faq[] = [
   },
   {
     q: '学完之后能做出什么？',
-    a: '两个可以真正发布上线的小程序：一个是接入 DeepSeek API 的 AI 角色聊天小程序（含云函数与 API 文档），一个是基于微信云开发的商城小程序（免登录、支持微信支付）。',
+    a: '两个可以真正发布上线的小程序：一个是接入 DeepSeek API 的 AI 角色聊天小程序（含云函数与 API 文档），一个是基于微信云开发的预约小程序（日历选时段、免登录、订阅消息、商家管理端）——个人主体就能发布，不需要企业资质。',
   },
   {
-    q: '项目二「商城小程序」的大纲什么时候更新？',
-    a: '项目二随项目一的完结陆续解锁，将覆盖微信云开发、免登录用户体系与微信支付等商用能力，章节会持续更新到课程目录中。',
+    q: '预约小程序支持在线支付吗？',
+    a: '主线课程采用「免登录 + 到店付」模式，个人开发者可直接上线。同时提供番外篇「定金支付」：针对有企业资质的同学，讲解如何给预约加上在线定金，防止爽约。',
   },
 ]
 
 export const stats = [
   { value: '5', label: '课程章节' },
-  { value: '26+', label: '规划课时' },
+  { value: '37', label: '规划课时' },
   { value: '2', label: '完整项目' },
   { value: '0', label: '基础要求' },
 ]

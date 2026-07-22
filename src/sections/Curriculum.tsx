@@ -1,8 +1,8 @@
 import {
   Boxes,
+  CalendarDays,
   MessageSquareHeart,
   PlayCircle,
-  ShoppingCart,
   Smartphone,
   WandSparkles,
 } from 'lucide-react'
@@ -20,7 +20,7 @@ const iconMap: Record<Chapter['icon'], typeof Boxes> = {
   smartphone: Smartphone,
   wand: WandSparkles,
   chat: MessageSquareHeart,
-  shop: ShoppingCart,
+  calendar: CalendarDays,
 }
 
 export default function Curriculum() {

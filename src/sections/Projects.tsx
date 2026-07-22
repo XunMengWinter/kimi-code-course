@@ -30,31 +30,62 @@ function ChatMock() {
   )
 }
 
-function ShopMock() {
+function BookingMock() {
+  const days = [
+    { d: '周四', n: '18' },
+    { d: '周五', n: '19' },
+    { d: '周六', n: '20', active: true },
+    { d: '周日', n: '21' },
+    { d: '周一', n: '22' },
+  ]
+  const slots = ['10:00', '14:00', '16:00']
   return (
     <div className="space-y-3 p-5">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold">优选商城</span>
+        <span className="text-xs font-semibold">猫寻摄影 · 约拍</span>
         <Badge variant="outline" className="border-emerald-500/40 text-[10px] text-emerald-400">
           免登录
         </Badge>
       </div>
-      <div className="grid grid-cols-2 gap-2.5">
-        {[
-          { name: '机械键盘', price: '¥299' },
-          { name: '降噪耳机', price: '¥899' },
-        ].map((p) => (
-          <div key={p.name} className="rounded-xl border border-border/60 bg-muted/50 p-3">
-            <div className="mb-2 h-14 rounded-lg bg-gradient-to-br from-primary/30 to-violet-500/20" />
-            <p className="text-[11px] font-medium">{p.name}</p>
-            <p className="mt-0.5 text-xs font-bold text-primary">{p.price}</p>
+      <div className="grid grid-cols-5 gap-1.5">
+        {days.map((day) => (
+          <div
+            key={day.n}
+            className={`rounded-lg border py-2 text-center ${
+              day.active
+                ? 'border-primary bg-primary/15 text-foreground'
+                : 'border-border/60 bg-muted/50 text-muted-foreground'
+            }`}
+          >
+            <p className="text-[9px]">{day.d}</p>
+            <p className="text-xs font-semibold">{day.n}</p>
           </div>
         ))}
       </div>
+      <div className="flex gap-2">
+        {slots.map((t, i) => (
+          <span
+            key={t}
+            className={`rounded-full px-3 py-1.5 text-[10px] ${
+              i === 1
+                ? 'bg-primary text-primary-foreground'
+                : 'border border-border/60 bg-muted/50 text-muted-foreground'
+            }`}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
       <div className="flex items-center justify-between rounded-xl bg-primary/10 px-3.5 py-2.5">
-        <span className="font-mono text-[10px] text-muted-foreground">微信支付 · 云开发</span>
+        <span className="font-mono text-[10px] text-muted-foreground">周六 14:00 · 到店付</span>
         <span className="rounded-full bg-primary px-3 py-1 text-[10px] font-medium text-primary-foreground">
-          立即下单
+          确认预约
+        </span>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+        <span className="font-mono text-[10px] text-muted-foreground">
+          云开发 · 订阅消息 · 商家管理端
         </span>
       </div>
     </div>
@@ -69,7 +100,7 @@ function PhoneFrame({ project }: { project: Project }) {
         <div className="flex items-center justify-center border-b border-border/50 py-2.5">
           <span className="h-1.5 w-16 rounded-full bg-muted-foreground/30" />
         </div>
-        {project.mock === 'chat' ? <ChatMock /> : <ShopMock />}
+        {project.mock === 'chat' ? <ChatMock /> : <BookingMock />}
       </div>
     </div>
   )

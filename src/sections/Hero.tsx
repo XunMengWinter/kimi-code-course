@@ -46,7 +46,7 @@ export default function Hero() {
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               不需要任何编程经验。从安装 Kimi 到发布上线，
-              让 AI 帮你写代码 —— 完成「AI 角色聊天」和「商城」
+              让 AI 帮你写代码 —— 完成「AI 角色聊天」和「预约」
               两个真实可上线的小程序项目。
             </p>
 

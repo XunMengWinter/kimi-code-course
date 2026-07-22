@@ -15,7 +15,7 @@ const items = [
   {
     icon: Layers,
     title: '两个完整项目',
-    desc: 'AI 角色聊天 + 商城小程序，覆盖云函数、DeepSeek API、微信支付等真实场景。',
+    desc: 'AI 角色聊天 + 预约小程序，覆盖云函数、DeepSeek API、订阅消息等真实场景。',
   },
   {
     icon: Rocket,
