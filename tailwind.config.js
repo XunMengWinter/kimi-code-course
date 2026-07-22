@@ -48,6 +48,12 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        leaf: "hsl(var(--leaf) / <alpha-value>)",
+        "leaf-light": "hsl(var(--leaf-light) / <alpha-value>)",
+        honey: "hsl(var(--honey) / <alpha-value>)",
+        orange: "hsl(var(--orange) / <alpha-value>)",
+        sky: "hsl(var(--sky) / <alpha-value>)",
+        sand: "hsl(var(--sand) / <alpha-value>)",
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",

@@ -4,35 +4,42 @@
 
 @layer base {
   :root {
-    /* 深色科技风（Kimi 蓝） */
-    --background: 224 36% 4%;
-    --foreground: 213 31% 94%;
-    --card: 224 30% 7%;
-    --card-foreground: 213 31% 94%;
-    --popover: 224 30% 7%;
-    --popover-foreground: 213 31% 94%;
-    --primary: 221 90% 62%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 224 24% 12%;
-    --secondary-foreground: 213 31% 94%;
-    --muted: 224 24% 12%;
-    --muted-foreground: 217 15% 62%;
-    --accent: 224 24% 14%;
-    --accent-foreground: 213 31% 94%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 224 20% 16%;
-    --input: 224 20% 16%;
-    --ring: 221 90% 62%;
-    --radius: 0.75rem;
-    --sidebar-background: 224 30% 7%;
-    --sidebar-foreground: 213 31% 94%;
-    --sidebar-primary: 221 90% 62%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 224 24% 12%;
-    --sidebar-accent-foreground: 213 31% 94%;
-    --sidebar-border: 224 20% 16%;
-    --sidebar-ring: 221 90% 62%;
+    /* 动森小岛 · 明亮奶油绘本风 */
+    --background: 39 83% 95%; /* 奶油白 #FDF6E9 */
+    --foreground: 105 12% 26%; /* 苔绿棕 #3E4A3A（对比度 ≈8.8:1） */
+    --card: 44 100% 98%; /* 暖白 #FFFCF4 */
+    --card-foreground: 105 12% 26%;
+    --popover: 44 100% 98%;
+    --popover-foreground: 105 12% 26%;
+    --primary: 139 33% 37%; /* 深森林绿 #3F7D53（白字对比度 ≈4.6:1） */
+    --primary-foreground: 44 100% 98%;
+    --secondary: 42 55% 92%;
+    --secondary-foreground: 105 12% 26%;
+    --muted: 42 55% 92%;
+    --muted-foreground: 45 12% 38%; /* 暖灰棕 #6E6852（对比度 ≈5.2:1） */
+    --accent: 42 55% 90%;
+    --accent-foreground: 105 12% 26%;
+    --destructive: 7 62% 60%; /* 柔和番茄红 #D96A5B */
+    --destructive-foreground: 44 100% 98%;
+    --border: 42 50% 86%; /* 暖沙 #EDE2C9 */
+    --input: 42 50% 86%;
+    --ring: 139 33% 37%;
+    --radius: 1.25rem;
+    /* 装饰色：只用于装饰与大面积色块，不作小字文字/底色 */
+    --leaf: 138 28% 47%; /* 森林绿 #579A6B */
+    --leaf-light: 132 37% 68%; /* 嫩叶绿 #8FCB9B */
+    --honey: 45 86% 72%; /* 蜂蜜黄 #F5D67B */
+    --orange: 30 85% 65%; /* 暖橙 #F2A65A */
+    --sky: 201 70% 70%; /* 天空蓝 #7FC4E8 */
+    --sand: 42 50% 86%; /* 暖沙（与 border 同值） */
+    --sidebar-background: 44 100% 98%;
+    --sidebar-foreground: 105 12% 26%;
+    --sidebar-primary: 139 33% 37%;
+    --sidebar-primary-foreground: 44 100% 98%;
+    --sidebar-accent: 42 55% 92%;
+    --sidebar-accent-foreground: 105 12% 26%;
+    --sidebar-border: 42 50% 86%;
+    --sidebar-ring: 139 33% 37%;
   }
 }
 
@@ -42,36 +49,90 @@
   }
   html {
     scroll-behavior: smooth;
+    font-size: 106.25%; /* 17px：全站字级上调一档 */
   }
   body {
     @apply bg-background text-foreground;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+  /* 纸张颗粒质感 */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
   ::selection {
-    @apply bg-primary/30 text-foreground;
+    @apply bg-primary/20 text-foreground;
   }
 }
 
 @layer utilities {
-  /* 渐变标题文字 */
+  /* 渐变标题文字（绿 → 嫩绿 → 暖橙） */
   .text-gradient {
-    @apply bg-gradient-to-r from-blue-400 via-blue-500 to-violet-400 bg-clip-text text-transparent;
+    background: linear-gradient(92deg, #4e9463 10%, #7fbe8d 55%, #f2a65a 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
-  /* 网格背景 */
-  .bg-grid {
-    background-image:
-      linear-gradient(to right, hsl(var(--border) / 0.35) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.35) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  /* Hero 天空渐变 */
+  .bg-sky {
+    background: linear-gradient(180deg, #c9e8f5 0%, #e8f4ec 36%, transparent 64%);
+  }
+
+  /* 软糖按钮（动森式压边厚度） */
+  .btn-squish {
+    box-shadow:
+      inset 0 -3px 0 hsl(139 33% 27% / 0.45),
+      0 8px 18px hsl(139 33% 37% / 0.28);
+  }
+  .btn-squish-outline {
+    box-shadow: inset 0 -3px 0 hsl(42 40% 80% / 0.6);
+  }
+
+  /* 卡片柔光（暖色投影 + 顶部高光） */
+  .card-soft {
+    box-shadow:
+      0 12px 26px hsl(45 30% 55% / 0.14),
+      inset 0 2px 0 #fff;
+  }
+
+  /* Highlights 标题的蜂蜜色小下划线 */
+  .spot-title::after {
+    content: '';
+    display: block;
+    width: 26px;
+    height: 4px;
+    margin-top: 8px;
+    border-radius: 2px;
+    background: hsl(var(--honey));
   }
 
   /* 终端逐行淡入 */
   .animate-fade-in {
     animation: fade-in 0.5s ease-out forwards;
+  }
+
+  /* 装饰动画：必须套在内层 <g> 上（定位 transform 放外层 <g>） */
+  .decor-drift {
+    animation: drift 46s ease-in-out infinite alternate;
+  }
+  .decor-drift-slow {
+    animation: drift 64s ease-in-out infinite alternate-reverse;
+  }
+  .decor-sway {
+    transform-box: fill-box;
+    transform-origin: bottom center;
+    animation: sway 6s ease-in-out infinite alternate;
+  }
+  .decor-bob {
+    transform-box: fill-box;
+    animation: bob 8s ease-in-out infinite;
   }
 
   /* 细滚动条 */
@@ -99,5 +160,45 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(22px);
+  }
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-3deg);
+  }
+  to {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .decor-drift,
+  .decor-drift-slow,
+  .decor-sway,
+  .decor-bob,
+  .animate-fade-in,
+  .animate-ping,
+  .animate-pulse {
+    animation: none;
   }
 }
