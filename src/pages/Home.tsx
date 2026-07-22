@@ -5,6 +5,7 @@ import Curriculum from '@/sections/Curriculum'
 import Projects from '@/sections/Projects'
 import FAQ from '@/sections/FAQ'
 import Footer from '@/sections/Footer'
+import SectionDivider from '@/components/decor/SectionDivider'
 
 export default function Home() {
   return (
@@ -13,8 +14,11 @@ export default function Home() {
       <main>
         <Hero />
         <Highlights />
+        <SectionDivider />
         <Curriculum />
+        <SectionDivider />
         <Projects />
+        <SectionDivider flip />
         <FAQ />
       </main>
       <Footer />
