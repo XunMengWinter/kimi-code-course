@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# Kimi Code 零基础开发小程序 · 课程官网
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+《Kimi Code 零基础开发小程序》系列课程的官方网站。
 
-Currently, two official plugins are available:
+🌐 **线上地址**：<https://kimi-code-course.pages.dev>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 功能
 
-## React Compiler
+- 课程亮点展示
+- 五章完整课程大纲（手风琴交互）
+  1. 认识 Kimi 全家桶（5 课时）
+  2. 微信小程序基础（3 课时）
+  3. Kimi Code 进阶玩法（5 课时）
+  4. 项目实战一 · AI 角色聊天小程序（13 课时）
+  5. 项目实战二 · 预约小程序（10 节主线 + 1 节支付番外）
+- 项目实战展示（聊天 / 预约日历手机样机）
+- 常见问题 FAQ
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 技术栈
 
-## Expanding the ESLint configuration
+React 19 · TypeScript · Vite 7 · Tailwind CSS 3.4 · shadcn/ui · lucide-react · Cloudflare Pages
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 快速开始
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install       # 安装依赖
+npm run dev       # 开发服务器 http://localhost:3000
+npm run build     # 生产构建 → dist/
+npm run preview   # 本地预览构建产物
+npm run deploy    # 构建并部署到 Cloudflare Pages
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> 首次部署需先 `npx wrangler login` 完成 Cloudflare 授权（浏览器点一次 Allow）。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 目录结构
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+├── index.html              # 入口 HTML
+├── vite.config.ts          # Vite 配置（base: './'，勿删）
+├── src/
+│   ├── data/course.ts      # ⭐ 课程内容数据（章节/课时/项目/FAQ）
+│   ├── sections/           # 页面区块组件（Hero/Curriculum/Projects/...）
+│   ├── pages/Home.tsx      # 页面组装
+│   ├── components/ui/      # shadcn/ui 组件
+│   └── index.css           # 深色主题 token + 自定义工具类
+├── AGENTS.md               # AI 编程助手指南（含约定与踩坑记录）
+└── dist/                   # 构建产物（不入库）
+```
+
+## 更新课程内容
+
+课程内容全部集中在 [`src/data/course.ts`](src/data/course.ts)，修改后：
+
+```bash
+npm run deploy
+```
+
+详见 [AGENTS.md](AGENTS.md) 的「内容维护指南」。
+
+## 部署
+
+- 托管：Cloudflare Pages（项目名 `kimi-code-course`）
+- 方式：wrangler 直传 `dist/`，生产分支 `main`
+- GitHub 仓库仅作源码备份，不参与部署链路
