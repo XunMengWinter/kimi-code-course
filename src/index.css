@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 深色科技风（Kimi 蓝） */
+    --background: 224 36% 4%;
+    --foreground: 213 31% 94%;
+    --card: 224 30% 7%;
+    --card-foreground: 213 31% 94%;
+    --popover: 224 30% 7%;
+    --popover-foreground: 213 31% 94%;
+    --primary: 221 90% 62%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 224 24% 12%;
+    --secondary-foreground: 213 31% 94%;
+    --muted: 224 24% 12%;
+    --muted-foreground: 217 15% 62%;
+    --accent: 224 24% 14%;
+    --accent-foreground: 213 31% 94%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 224 20% 16%;
+    --input: 224 20% 16%;
+    --ring: 221 90% 62%;
+    --radius: 0.75rem;
+    --sidebar-background: 224 30% 7%;
+    --sidebar-foreground: 213 31% 94%;
+    --sidebar-primary: 221 90% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224 24% 12%;
+    --sidebar-accent-foreground: 213 31% 94%;
+    --sidebar-border: 224 20% 16%;
+    --sidebar-ring: 221 90% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer utilities {
+  /* 渐变标题文字 */
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-400 via-blue-500 to-violet-400 bg-clip-text text-transparent;
+  }
+
+  /* 网格背景 */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.35) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  }
+
+  /* 终端逐行淡入 */
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  /* 细滚动条 */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
