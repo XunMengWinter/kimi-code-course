@@ -96,7 +96,7 @@ function PhoneFrame({ project }: { project: Project }) {
   return (
     <div className="relative mx-auto w-full max-w-[300px]">
       <div className="absolute -inset-3 rounded-[2.5rem] bg-honey/25 blur-xl" />
-      <div className="card-soft relative overflow-hidden rounded-[2rem] border border-sand bg-card">
+      <div className="card-soft relative overflow-hidden rounded-[2rem] border-2 border-sand bg-card">
         <div className="flex items-center justify-center border-b border-sand/60 py-2.5">
           <span className="h-1.5 w-16 rounded-full bg-muted-foreground/30" />
         </div>
@@ -131,7 +131,7 @@ export default function Projects() {
               }`}
             >
               <PhoneFrame project={p} />
-              <Card className="card-soft border-sand bg-card">
+              <Card className="card-soft border-2 border-sand bg-card">
                 <CardContent className="p-7 sm:p-9">
                   <div className="mb-4 flex items-center gap-3">
                     <span className="font-mono text-xs tracking-widest text-primary">{p.no}</span>

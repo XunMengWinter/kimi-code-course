@@ -41,7 +41,7 @@ export default function Highlights() {
           {items.map((item) => (
             <Card
               key={item.title}
-              className="card-soft group border-sand bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-honey/30"
+              className="card-soft group border-2 border-sand bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-honey/30"
             >
               <CardContent className="p-6">
                 <SpotIcon

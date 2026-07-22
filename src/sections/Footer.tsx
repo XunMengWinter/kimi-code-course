@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden">
       {/* CTA */}
       <div className="relative mx-auto max-w-6xl px-4 pb-24 sm:px-6">
-        <div className="relative overflow-hidden rounded-3xl border border-leaf/30 bg-gradient-to-br from-leaf/15 via-card to-honey/25 px-8 py-14 text-center sm:py-16">
+        <div className="cta-dots relative overflow-hidden rounded-3xl border-2 border-leaf/30 px-8 py-14 text-center sm:py-16">
           <div className="pointer-events-none absolute -top-24 left-1/2 h-[300px] w-[500px] -translate-x-1/2 rounded-full bg-honey/30 blur-[110px]" />
           <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
             现在，就让 Kimi 帮你写第一行代码

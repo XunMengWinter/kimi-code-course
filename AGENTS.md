@@ -37,6 +37,8 @@ src/
 ├── sections/             # 页面区块：Navbar / Hero / Highlights / Curriculum / Projects / FAQ / Footer
 ├── pages/Home.tsx        # 唯一页面，组合所有区块
 ├── components/ui/        # shadcn/ui 组件库（一般不要改）
+├── components/decor/     # SVG 装饰组件（SkyDecor / Landscape / SectionDivider / SpotIcon）
+├── assets/fonts/         # 自托管字体（nunito-latin.woff2，可变字重 200–1000）
 ├── index.css             # 主题 token（:root CSS 变量）+ 自定义工具类
 └── App.tsx               # 路由：<Route path="*" element={<Home />} />
 ```
@@ -52,8 +54,10 @@ src/
 
 ## 设计约定
 
-- **只有亮色主题**（动森小岛绘本风），配色定义在 `src/index.css` 的 `:root`（HSL 变量），主色 `139 33% 37%`（深森林绿）；装饰色 `--leaf` / `--leaf-light` / `--honey` / `--orange` / `--sky` / `--sand` 只用于装饰与大面积色块，不作小字文字/底色（对比度）
-- 自定义工具类：`.text-gradient`（绿→橙渐变标题）、`.bg-sky`（Hero 天空渐变）、`.btn-squish` / `.btn-squish-outline`（软糖按钮压边）、`.card-soft`（卡片柔光）、`.spot-title`（蜂蜜下划线）、`.animate-fade-in`（终端逐行淡入）；装饰动画 `.decor-drift` / `.decor-drift-slow` / `.decor-sway` / `.decor-bob`（`prefers-reduced-motion` 下自动关闭，且必须套在内层 `<g>` 上使用）
+- **只有亮色主题**（动森小岛绘本风），配色定义在 `src/index.css` 的 `:root`（HSL 变量），主色 `139 33% 37%`（深森林绿）；正文/标题文字用暖棕 `29 51% 31%`（#794F27，即 `--foreground`），次要文字 `39 23% 40%`（`--muted-foreground`）；装饰色 `--leaf` / `--leaf-light` / `--honey` / `--orange` / `--sky` / `--sand` 只用于装饰与大面积色块，不作小字文字/底色（对比度）
+- 正文字体：Nunito（自托管可变字体 `src/assets/fonts/nunito-latin.woff2`，`@font-face` 在 `index.css`，字重 200–1000；中文回退 PingFang SC / 微软雅黑），通过 `tailwind.config.js` 的 `fontFamily.sans` 全局生效
+- 自定义工具类：`.text-gradient`（绿→橙渐变标题）、`.bg-sky`（Hero 天空渐变）、`.btn-squish` / `.btn-squish-outline`（3D 按压按钮：默认 4px 深色底边，active 时下沉 2px）、`.card-soft`（卡片柔光）、`.spot-title`（蜂蜜下划线）、`.cta-dots`（Footer CTA 波点纹理 + 绿→米→蜜渐变）、`.animate-fade-in`（终端逐行淡入）；装饰动画 `.decor-drift` / `.decor-drift-slow` / `.decor-sway` / `.decor-bob`（`prefers-reduced-motion` 下自动关闭，且必须套在内层 `<g>` 上使用）
+- 卡片/手风琴/终端等容器统一 `border-2` 描边（绘本勾线感），配大圆角
 - SVG 装饰组件在 `src/components/decor/`：`SkyDecor`（Hero 天空）、`Landscape`（Hero 风景带）、`SectionDivider`（区块分隔带，`flip` 可镜像）、`SpotIcon`（手绘小图标，sprout/wand/house/flag）
 - 页面内导航用锚点（`#curriculum` 等），`html` 已开 `scroll-behavior: smooth`
 - 不要用 Tailwind 不存在的间距值（如 `h-4.5`），不会报错但会静默失效
@@ -80,5 +84,5 @@ npm run deploy   # = npm run build && wrangler pages deploy dist --project-name=
 ## Git 规范
 
 - 提交信息用 Conventional Commits：`feat:` / `fix:` / `docs:` / `build:` / `chore:` / `style:`
-- 只提交源码与文档；`dist/`、`node_modules/`、`.wrangler/` 一律不进版本库
+- 只提交源码与文档；`dist/`、`node_modules/`、`.wrangler/`、`.superpowers/` 一律不进版本库
 - 远端：`origin` → GitHub（备份用，部署不经过它）

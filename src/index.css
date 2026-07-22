@@ -2,23 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Nunito 可变字体（拉丁/数字圆润字形，中文回退系统字体） */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('./assets/fonts/nunito-latin.woff2') format('woff2');
+}
+
 @layer base {
   :root {
     /* 动森小岛 · 明亮奶油绘本风 */
     --background: 39 83% 95%; /* 奶油白 #FDF6E9 */
-    --foreground: 105 12% 26%; /* 苔绿棕 #3E4A3A（对比度 ≈8.8:1） */
+    --foreground: 29 51% 31%; /* 暖棕 #794F27 · 动森对话框配色（对比度 ≈6.6:1） */
     --card: 44 100% 98%; /* 暖白 #FFFCF4 */
-    --card-foreground: 105 12% 26%;
+    --card-foreground: 29 51% 31%;
     --popover: 44 100% 98%;
-    --popover-foreground: 105 12% 26%;
+    --popover-foreground: 29 51% 31%;
     --primary: 139 33% 37%; /* 深森林绿 #3F7D53（白字对比度 ≈4.6:1） */
     --primary-foreground: 44 100% 98%;
     --secondary: 42 55% 92%;
-    --secondary-foreground: 105 12% 26%;
+    --secondary-foreground: 29 51% 31%;
     --muted: 42 55% 92%;
-    --muted-foreground: 45 12% 38%; /* 暖灰棕 #6E6852（对比度 ≈5.2:1） */
+    --muted-foreground: 39 23% 40%; /* 暖灰褐 #7C6C4E（对比度 ≈4.7:1） */
     --accent: 42 55% 90%;
-    --accent-foreground: 105 12% 26%;
+    --accent-foreground: 29 51% 31%;
     --destructive: 7 62% 60%; /* 柔和番茄红 #D96A5B */
     --destructive-foreground: 44 100% 98%;
     --border: 42 50% 86%; /* 暖沙 #EDE2C9 */
@@ -33,11 +42,11 @@
     --sky: 201 70% 70%; /* 天空蓝 #7FC4E8 */
     --sand: 42 50% 86%; /* 暖沙（与 border 同值） */
     --sidebar-background: 44 100% 98%;
-    --sidebar-foreground: 105 12% 26%;
+    --sidebar-foreground: 29 51% 31%;
     --sidebar-primary: 139 33% 37%;
     --sidebar-primary-foreground: 44 100% 98%;
     --sidebar-accent: 42 55% 92%;
-    --sidebar-accent-foreground: 105 12% 26%;
+    --sidebar-accent-foreground: 29 51% 31%;
     --sidebar-border: 42 50% 86%;
     --sidebar-ring: 139 33% 37%;
   }
@@ -85,14 +94,54 @@
     background: linear-gradient(180deg, #c9e8f5 0%, #e8f4ec 36%, transparent 64%);
   }
 
-  /* 软糖按钮（动森式压边厚度） */
+  /* 软糖按钮（动森式实体按键：默认 4px 底边，hover 抬起，active 按下） */
   .btn-squish {
     box-shadow:
-      inset 0 -3px 0 hsl(139 33% 27% / 0.45),
-      0 8px 18px hsl(139 33% 37% / 0.28);
+      0 4px 0 hsl(139 33% 27%),
+      0 10px 20px hsl(139 33% 37% / 0.25);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  .btn-squish:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 5px 0 hsl(139 33% 27%),
+      0 12px 22px hsl(139 33% 37% / 0.28);
+  }
+  .btn-squish:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 hsl(139 33% 27%);
   }
   .btn-squish-outline {
-    box-shadow: inset 0 -3px 0 hsl(42 40% 80% / 0.6);
+    box-shadow: 0 4px 0 hsl(42 40% 78%);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  .btn-squish-outline:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 0 hsl(42 40% 78%);
+  }
+  .btn-squish-outline:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 hsl(42 40% 78%);
+  }
+
+  /* Footer CTA：叶绿→蜂蜜渐变 + 双层波点纹理 */
+  .cta-dots {
+    background-image:
+      radial-gradient(circle, hsl(var(--leaf) / 0.12) 1.5px, transparent 1.5px),
+      radial-gradient(circle, hsl(var(--honey) / 0.2) 1px, transparent 1px),
+      linear-gradient(to bottom right, hsl(var(--leaf) / 0.15), hsl(var(--card)), hsl(var(--honey) / 0.25));
+    background-size:
+      28px 28px,
+      14px 14px,
+      auto;
+    background-position:
+      0 0,
+      7px 7px,
+      0 0;
   }
 
   /* 卡片柔光（暖色投影 + 顶部高光） */

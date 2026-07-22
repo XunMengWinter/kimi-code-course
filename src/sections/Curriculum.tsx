@@ -43,7 +43,7 @@ export default function Curriculum() {
               <AccordionItem
                 key={ch.id}
                 value={ch.id}
-                className="card-soft overflow-hidden rounded-2xl border border-sand bg-card px-6 transition-colors data-[state=open]:border-leaf/50"
+                className="card-soft overflow-hidden rounded-2xl border-2 border-sand bg-card px-6 transition-colors data-[state=open]:border-leaf/50"
               >
                 <AccordionTrigger className="gap-4 py-5 hover:no-underline">
                   <div className="flex flex-1 items-center gap-4 text-left">

@@ -85,7 +85,7 @@ export default function Hero() {
           {/* 右侧终端窗口（奶油换肤） */}
           <div className="relative">
             <div className="absolute -inset-4 rounded-3xl bg-honey/25 blur-2xl" />
-            <div className="card-soft relative overflow-hidden rounded-3xl border border-sand bg-card">
+            <div className="card-soft relative overflow-hidden rounded-3xl border-2 border-sand bg-card">
               <div className="flex items-center gap-2 border-b border-sand/70 bg-gradient-to-b from-[#FCF6E8] to-[#F8EED9] px-4 py-3">
                 <span className="h-3 w-3 rounded-full bg-[#F0857D] shadow-[inset_0_-2px_0_rgba(0,0,0,0.12)]" />
                 <span className="h-3 w-3 rounded-full bg-honey shadow-[inset_0_-2px_0_rgba(0,0,0,0.12)]" />
@@ -118,7 +118,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="card-soft absolute -bottom-5 -left-5 hidden items-center gap-2 rounded-2xl border border-sand bg-card px-4 py-3 sm:flex">
+            <div className="card-soft absolute -bottom-5 -left-5 hidden items-center gap-2 rounded-2xl border-2 border-sand bg-card px-4 py-3 sm:flex">
               <CheckCircle2 className="h-5 w-5 text-primary" />
               <div className="text-xs">
                 <p className="font-medium text-foreground">小程序已发布</p>
