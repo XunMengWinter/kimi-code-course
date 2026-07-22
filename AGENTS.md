@@ -6,7 +6,7 @@
 ## 项目概述
 
 《Kimi Code 零基础开发小程序》系列课程的官网，单页应用（SPA）。
-展示课程亮点、五章课程大纲、两个项目实战（AI 角色聊天 / 预约小程序）、FAQ。
+展示课程亮点、五章课程大纲、两个项目实战（AI 角色聊天 / 约妆小程序）、FAQ。
 
 - 线上地址：<https://kimi-code-course.pages.dev>
 - 源码仓库：<https://github.com/XunMengWinter/kimi-code-course>（仅作代码备份，不参与部署）
