@@ -26,8 +26,6 @@ const iconMap: Record<Chapter['icon'], typeof Boxes> = {
 export default function Curriculum() {
   return (
     <section id="curriculum" className="relative py-20 sm:py-24">
-      <div className="pointer-events-none absolute left-[-140px] top-1/3 h-[360px] w-[360px] rounded-full bg-primary/8 blur-[130px]" />
-
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6">
         <div className="mb-12 text-center">
           <p className="mb-3 font-mono text-sm text-primary">// 课程大纲</p>
@@ -45,7 +43,7 @@ export default function Curriculum() {
               <AccordionItem
                 key={ch.id}
                 value={ch.id}
-                className="overflow-hidden rounded-2xl border border-border/60 bg-card/60 px-6 transition-colors data-[state=open]:border-primary/30"
+                className="card-soft overflow-hidden rounded-2xl border border-sand bg-card px-6 transition-colors data-[state=open]:border-leaf/50"
               >
                 <AccordionTrigger className="gap-4 py-5 hover:no-underline">
                   <div className="flex flex-1 items-center gap-4 text-left">
@@ -59,7 +57,7 @@ export default function Curriculum() {
                       <span className="flex flex-wrap items-center gap-2.5">
                         <span className="text-base font-semibold sm:text-lg">{ch.title}</span>
                         {ch.status === 'updating' && (
-                          <Badge className="rounded-full bg-amber-500/15 text-amber-400 hover:bg-amber-500/15">
+                          <Badge className="rounded-full bg-honey/35 text-[hsl(45_40%_32%)] hover:bg-honey/35">
                             陆续更新
                           </Badge>
                         )}
@@ -89,7 +87,11 @@ export default function Curriculum() {
                         {lesson.tag && (
                           <Badge
                             variant="outline"
-                            className="rounded-full border-border/80 text-[11px] text-muted-foreground"
+                            className={`rounded-full text-[11px] ${
+                              lesson.tag === '番外篇'
+                                ? 'border-transparent bg-sky/25 text-[hsl(201_45%_35%)]'
+                                : 'border-sand text-muted-foreground'
+                            }`}
                           >
                             {lesson.tag}
                           </Badge>

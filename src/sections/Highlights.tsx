@@ -1,24 +1,24 @@
-import { Bot, Layers, Rocket, Sparkles } from 'lucide-react'
+import SpotIcon, { type SpotIconName } from '@/components/decor/SpotIcon'
 import { Card, CardContent } from '@/components/ui/card'
 
-const items = [
+const items: { icon: SpotIconName; title: string; desc: string }[] = [
   {
-    icon: Sparkles,
+    icon: 'sprout',
     title: '真正的零基础',
     desc: '不需要任何编程经验，从 Kimi 的下载安装讲起，每一步都有完整演示。',
   },
   {
-    icon: Bot,
+    icon: 'wand',
     title: 'AI 驱动开发',
     desc: '全程用 Kimi Code 写代码：Plan 模式、MCP、Skill、AGENTS.md、goal 模式一个不落。',
   },
   {
-    icon: Layers,
+    icon: 'house',
     title: '两个完整项目',
-    desc: 'AI 角色聊天 + 预约小程序，覆盖云函数、DeepSeek API、订阅消息等真实场景。',
+    desc: 'AI 角色聊天 + 约妆小程序，覆盖云函数、DeepSeek API、订阅消息等真实场景。',
   },
   {
-    icon: Rocket,
+    icon: 'flag',
     title: '从开发到上线',
     desc: '注册、认证、备案、发布全流程讲解，做出来的不只是一段代码，而是上线的作品。',
   },
@@ -41,13 +41,14 @@ export default function Highlights() {
           {items.map((item) => (
             <Card
               key={item.title}
-              className="group border-border/60 bg-card/60 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
+              className="card-soft group border-sand bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-honey/30"
             >
               <CardContent className="p-6">
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  <item.icon className="h-5 w-5" strokeWidth={1.8} />
-                </div>
-                <h3 className="mb-2.5 text-lg font-semibold">{item.title}</h3>
+                <SpotIcon
+                  name={item.icon}
+                  className="mb-5 h-14 w-14 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110"
+                />
+                <h3 className="spot-title mb-2.5 text-lg font-semibold">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
               </CardContent>
             </Card>
