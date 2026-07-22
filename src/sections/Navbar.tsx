@@ -22,9 +22,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'border-b border-border/60 bg-background/85 backdrop-blur-xl'
-          : 'bg-transparent'
+        scrolled ? 'border-b border-sand bg-card/85 backdrop-blur-xl' : 'bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
@@ -49,7 +47,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <Button asChild size="sm" className="rounded-full px-5">
+        <Button asChild size="sm" className="btn-squish rounded-full px-5">
           <a href="#curriculum">开始学习</a>
         </Button>
       </div>

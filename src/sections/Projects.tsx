@@ -21,7 +21,7 @@ function ChatMock() {
         </div>
       </div>
       <div className="flex items-center gap-2 pt-1">
-        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-leaf" />
         <span className="font-mono text-[10px] text-muted-foreground">
           cloud function · DeepSeek API · 已接入
         </span>
@@ -42,8 +42,8 @@ function BookingMock() {
   return (
     <div className="space-y-3 p-5">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold">猫寻摄影 · 约拍</span>
-        <Badge variant="outline" className="border-emerald-500/40 text-[10px] text-emerald-400">
+        <span className="text-xs font-semibold">糖心妆造 · 约妆</span>
+        <Badge variant="outline" className="border-leaf/50 bg-leaf/10 text-[10px] text-primary">
           免登录
         </Badge>
       </div>
@@ -53,8 +53,8 @@ function BookingMock() {
             key={day.n}
             className={`rounded-lg border py-2 text-center ${
               day.active
-                ? 'border-primary bg-primary/15 text-foreground'
-                : 'border-border/60 bg-muted/50 text-muted-foreground'
+                ? 'border-primary bg-primary/10 text-foreground'
+                : 'border-sand bg-muted/50 text-muted-foreground'
             }`}
           >
             <p className="text-[9px]">{day.d}</p>
@@ -69,7 +69,7 @@ function BookingMock() {
             className={`rounded-full px-3 py-1.5 text-[10px] ${
               i === 1
                 ? 'bg-primary text-primary-foreground'
-                : 'border border-border/60 bg-muted/50 text-muted-foreground'
+                : 'border border-sand bg-muted/50 text-muted-foreground'
             }`}
           >
             {t}
@@ -77,13 +77,13 @@ function BookingMock() {
         ))}
       </div>
       <div className="flex items-center justify-between rounded-xl bg-primary/10 px-3.5 py-2.5">
-        <span className="font-mono text-[10px] text-muted-foreground">周六 14:00 · 到店付</span>
+        <span className="font-mono text-[10px] text-muted-foreground">周六 14:00 · 现场付</span>
         <span className="rounded-full bg-primary px-3 py-1 text-[10px] font-medium text-primary-foreground">
           确认预约
         </span>
       </div>
       <div className="flex items-center gap-2">
-        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-leaf" />
         <span className="font-mono text-[10px] text-muted-foreground">
           云开发 · 订阅消息 · 商家管理端
         </span>
@@ -95,9 +95,9 @@ function BookingMock() {
 function PhoneFrame({ project }: { project: Project }) {
   return (
     <div className="relative mx-auto w-full max-w-[300px]">
-      <div className="absolute -inset-3 rounded-[2.5rem] bg-primary/10 blur-xl" />
-      <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-card shadow-2xl">
-        <div className="flex items-center justify-center border-b border-border/50 py-2.5">
+      <div className="absolute -inset-3 rounded-[2.5rem] bg-honey/25 blur-xl" />
+      <div className="card-soft relative overflow-hidden rounded-[2rem] border border-sand bg-card">
+        <div className="flex items-center justify-center border-b border-sand/60 py-2.5">
           <span className="h-1.5 w-16 rounded-full bg-muted-foreground/30" />
         </div>
         {project.mock === 'chat' ? <ChatMock /> : <BookingMock />}
@@ -109,7 +109,7 @@ function PhoneFrame({ project }: { project: Project }) {
 export default function Projects() {
   return (
     <section id="projects" className="relative py-20 sm:py-24">
-      <div className="pointer-events-none absolute right-[-120px] top-1/4 h-[380px] w-[380px] rounded-full bg-violet-500/8 blur-[130px]" />
+      <div className="pointer-events-none absolute right-[-120px] top-1/4 h-[380px] w-[380px] rounded-full bg-honey/20 blur-[130px]" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mb-14 text-center">
@@ -131,15 +131,15 @@ export default function Projects() {
               }`}
             >
               <PhoneFrame project={p} />
-              <Card className="border-border/60 bg-card/60">
+              <Card className="card-soft border-sand bg-card">
                 <CardContent className="p-7 sm:p-9">
                   <div className="mb-4 flex items-center gap-3">
                     <span className="font-mono text-xs tracking-widest text-primary">{p.no}</span>
                     <Badge
                       className={`rounded-full ${
                         p.status === '已开放'
-                          ? 'bg-emerald-500/15 text-emerald-400 hover:bg-emerald-500/15'
-                          : 'bg-amber-500/15 text-amber-400 hover:bg-amber-500/15'
+                          ? 'bg-leaf/15 text-primary hover:bg-leaf/15'
+                          : 'bg-honey/35 text-[hsl(45_40%_32%)] hover:bg-honey/35'
                       }`}
                     >
                       {p.status}
@@ -152,7 +152,7 @@ export default function Projects() {
                       <Badge
                         key={b}
                         variant="outline"
-                        className="rounded-full border-primary/30 bg-primary/5 px-3 py-1 text-xs text-foreground/80"
+                        className="rounded-full border-leaf/40 bg-leaf/5 px-3 py-1 text-xs text-foreground/80"
                       >
                         {b}
                       </Badge>
