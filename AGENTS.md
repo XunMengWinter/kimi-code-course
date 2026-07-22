@@ -52,8 +52,9 @@ src/
 
 ## 设计约定
 
-- **只有深色主题**，配色定义在 `src/index.css` 的 `:root`（HSL 变量），主色 `221 90% 62%`（Kimi 蓝）
-- 自定义工具类：`.text-gradient`（渐变标题）、`.bg-grid`（网格背景）、`.animate-fade-in`（终端逐行淡入）
+- **只有亮色主题**（动森小岛绘本风），配色定义在 `src/index.css` 的 `:root`（HSL 变量），主色 `139 33% 37%`（深森林绿）；装饰色 `--leaf` / `--leaf-light` / `--honey` / `--orange` / `--sky` / `--sand` 只用于装饰与大面积色块，不作小字文字/底色（对比度）
+- 自定义工具类：`.text-gradient`（绿→橙渐变标题）、`.bg-sky`（Hero 天空渐变）、`.btn-squish` / `.btn-squish-outline`（软糖按钮压边）、`.card-soft`（卡片柔光）、`.spot-title`（蜂蜜下划线）、`.animate-fade-in`（终端逐行淡入）；装饰动画 `.decor-drift` / `.decor-drift-slow` / `.decor-sway` / `.decor-bob`（`prefers-reduced-motion` 下自动关闭，且必须套在内层 `<g>` 上使用）
+- SVG 装饰组件在 `src/components/decor/`：`SkyDecor`（Hero 天空）、`Landscape`（Hero 风景带）、`SectionDivider`（区块分隔带，`flip` 可镜像）、`SpotIcon`（手绘小图标，sprout/wand/house/flag）
 - 页面内导航用锚点（`#curriculum` 等），`html` 已开 `scroll-behavior: smooth`
 - 不要用 Tailwind 不存在的间距值（如 `h-4.5`），不会报错但会静默失效
 - 中文排版：数字、英文与中文之间留空格
